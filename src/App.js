@@ -2,13 +2,20 @@ import './App.css';
 import Container from './Container';
 
 const App = () => {
+
+  const songs = [
+    "리와인드",
+    "슈퍼노바",
+    "사건의 지평선",
+  ]
+
+
   return (
     <div>
       <Header/>
-      <Playlist/>
-      <Container title = "슈퍼노바" index = "1"/>
-      <Container title = "보헤미안 랩소디" index = "2"/>
-      <Container title = "리와인드" index ="3"/>
+      <Playlist
+        title = "프로그래밍하면서 듣고 싶은 노래"
+        listsong = {songs}/>
     </div>
   )
 }
@@ -19,12 +26,19 @@ const Header = () =>{
   )
 }
 
-const Playlist = () =>{
+const Playlist = props => {
   return (
-    <div className="playlist">
-      프로그래밍하면서 듣고 싶은 노래
+    <div className='playlist'>
+      <div className="playlist">{props.title}</div>
+      {
+        props.listsong.map((song,index)=>(
+         <Container key={index} title={song} index={index}/>
+        ))
+      }
     </div>
   )
+
+
 }
 
 export default App
