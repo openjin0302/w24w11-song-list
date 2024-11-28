@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { FaStar } from 'react-icons/fa'
 
 
 const Container = (props)  =>{
@@ -22,6 +23,11 @@ const Container = (props)  =>{
             <div className="song-title">
               {`${props.song.title} (${props.song.singer})`}
             </div>
+            <div className="song-rating">
+              {[...Array(props.song.rating)].map((_,index)=>(
+                <FaStar key ={index}/>
+              ))}
+            </div>
           </a>
         </div>
         {props.song.lyrics && lyricsExpanded && (
@@ -30,6 +36,7 @@ const Container = (props)  =>{
           </pre>
         )}
       </>
+      최대한 예쁘게 만들기 , 노래는 주제로 하면 안됨
     )
   }
 
